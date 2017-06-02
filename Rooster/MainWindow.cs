@@ -16,11 +16,8 @@ namespace Rooster
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            addResultButton.Enabled = false;
         }
 
         private void pomocToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,7 +32,13 @@ namespace Rooster
             {
                 var content = File.ReadAllText(openRoosterDialog.FileName);
                 ReadRoosterFile(content);
+                EnableAddResultButton();
             }
+        }
+
+        private void EnableAddResultButton()
+        {
+            addResultButton.Enabled = true;
         }
 
         private void ReadRoosterFile(string content)

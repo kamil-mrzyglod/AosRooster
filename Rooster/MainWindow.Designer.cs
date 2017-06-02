@@ -276,7 +276,6 @@
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "Rooster";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
