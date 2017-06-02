@@ -116,7 +116,7 @@
             // 
             this.addPlayerMenuItem.Enabled = false;
             this.addPlayerMenuItem.Name = "addPlayerMenuItem";
-            this.addPlayerMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addPlayerMenuItem.Size = new System.Drawing.Size(142, 22);
             this.addPlayerMenuItem.Text = "Dodaj gracza";
             this.addPlayerMenuItem.Click += new System.EventHandler(this.addPlayerMenuItem_Click);
             // 
@@ -191,48 +191,43 @@
             this.resultDataGrid.Size = new System.Drawing.Size(606, 258);
             this.resultDataGrid.TabIndex = 7;
             this.resultDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.resultDataGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultDataGrid_CellValueChanged);
             // 
             // PlayerName
             // 
             this.PlayerName.DataPropertyName = "PlayerName";
             this.PlayerName.HeaderText = "Gracz";
             this.PlayerName.Name = "PlayerName";
-            this.PlayerName.ReadOnly = true;
             // 
             // faction
             // 
             this.faction.DataPropertyName = "Faction";
             this.faction.HeaderText = "Frakcja";
             this.faction.Name = "faction";
-            this.faction.ReadOnly = true;
             // 
             // Points
             // 
             this.Points.DataPropertyName = "Points";
             this.Points.HeaderText = "Punkty";
             this.Points.Name = "Points";
-            this.Points.ReadOnly = true;
             // 
             // wins
             // 
             this.wins.DataPropertyName = "Wins";
             this.wins.HeaderText = "W";
             this.wins.Name = "wins";
-            this.wins.ReadOnly = true;
             // 
             // draws
             // 
             this.draws.DataPropertyName = "Draws";
             this.draws.HeaderText = "R";
             this.draws.Name = "draws";
-            this.draws.ReadOnly = true;
             // 
             // loses
             // 
             this.loses.DataPropertyName = "Loses";
             this.loses.HeaderText = "P";
             this.loses.Name = "loses";
-            this.loses.ReadOnly = true;
             // 
             // addResultButton
             // 

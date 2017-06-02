@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -297,6 +298,17 @@ namespace Rooster
 
             _players.Add(player);
             _bindingSource.Add(player);
+        }
+
+        private void resultDataGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex < 0) return;
+            var playerInTable = _bindingSource[e.RowIndex];
+            var player = _players.First(_ => _.PlayerName == playerInTable.PlayerName);
+            player.Draws = playerInTable.Draws;
+            player.Loses = playerInTable.Loses;
+            player.Points = playerInTable.Points;
+            player.Wins = playerInTable.Wins;
         }
     }
 }
