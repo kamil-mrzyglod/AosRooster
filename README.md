@@ -23,4 +23,6 @@ Please have in mind, that drawing pairs(at least in the current release) doesn't
 
 Adding a result of a game is pretty simple - just click on **Dodaj wynik** - it'll display a window where you can select players and enter points. The application will independently determine who won, who lost or whether it was a draw. 
 
+Each time you add a result, it'll be added to **rooster.dat** file, which can be found in your Desktop directory. It contains all results and games and if any crash happens, you can restart the application and use **Plik** -> **Wczytaj wyniki** to restore the state.
+
 **Please note that it's still a beta version so any help - posting bugs, ideas or fixes - is much appreciated!**
