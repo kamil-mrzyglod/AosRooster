@@ -10,7 +10,7 @@ namespace Rooster
     public partial class MainWindow : Form
     {
         private static readonly Random Random = new Random();
-        private static bool _isRoosterLoaded = false;
+        private static bool _isRoosterLoaded;
 
         private readonly SortableBindingList<Player> _bindingSource = new SortableBindingList<Player>();
         private IList<Player> _players;
@@ -43,6 +43,7 @@ namespace Rooster
                 var content = File.ReadAllText(openRoosterDialog.FileName, GetEncoding(openRoosterDialog.FileName));
                 ReadRoosterFile(content);
                 EnableAddResultButton();
+                EnableAddPlayerButton();
                 _isRoosterLoaded = true;
             }
         }
@@ -52,6 +53,11 @@ namespace Rooster
             addResultButton.Enabled = true;
         }
 
+        private void EnableAddPlayerButton()
+        {
+            addPlayerMenuItem.Enabled = true;
+        }
+
         private void ReadRoosterFile(string content)
         {
             var players = content.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
@@ -59,8 +65,8 @@ namespace Rooster
             foreach (var player in players)
             {
                 var playerData = player.Split(';');
-                _players.Add(new Player() { PlayerName = playerData[0], Faction = playerData[1]});
-                _bindingSource.Add(new Player() { PlayerName = playerData[0], Faction = playerData[1] });
+                _players.Add(new Player { PlayerName = playerData[0], Faction = playerData[1]});
+                _bindingSource.Add(new Player { PlayerName = playerData[0], Faction = playerData[1] });
             }
 
             resultDataGrid.DataSource = _bindingSource;
@@ -72,6 +78,13 @@ namespace Rooster
             var finished = false;
 
             if(_players == null) return;
+            if (_players.Count % 2 != 0)
+            {
+                MessageBox.Show("Nie można losować graczy przy ich nieparzystej ilości.", "Nieprawidłowa ilość graczy",
+                    MessageBoxButtons.OK);
+                return;
+            }
+
             var copiedPlayers = new List<Player>(_players);
 
             while (finished == false)
@@ -260,6 +273,30 @@ namespace Rooster
             if (bom[0] == 0xfe && bom[1] == 0xff) return Encoding.BigEndianUnicode; //UTF-16BE
             if (bom[0] == 0 && bom[1] == 0 && bom[2] == 0xfe && bom[3] == 0xff) return Encoding.UTF32;
             return Encoding.Default;
+        }
+
+        private void addPlayerMenuItem_Click(object sender, EventArgs e)
+        {
+            var addResult = new AddPlayer();
+            addResult.AddPlayers(_players);
+            addResult.SetMainWindow(this);
+            addResult.Show();
+        }
+
+        public void AddNewPlayer(string playerName, string playerFaction)
+        {
+            var player = new Player
+            {
+                Draws = 0,
+                Faction = playerFaction,
+                Loses = 0,
+                PlayerName = playerName,
+                Points = 0,
+                Wins = 0
+            };
+
+            _players.Add(player);
+            _bindingSource.Add(player);
         }
     }
 }

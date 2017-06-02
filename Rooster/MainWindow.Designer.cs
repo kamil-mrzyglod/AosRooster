@@ -32,7 +32,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.załadujRoosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wczytajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zamknijToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.graczeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPlayerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openRoosterDialog = new System.Windows.Forms.OpenFileDialog();
             this.randomPlayers = new System.Windows.Forms.Button();
@@ -49,7 +52,6 @@
             this.addResultButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.detailedResultTextbox = new System.Windows.Forms.TextBox();
-            this.wczytajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadRoosterDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainWindowBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mainWindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -63,6 +65,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.plikToolStripMenuItem,
+            this.graczeToolStripMenuItem,
             this.pomocToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -87,12 +90,35 @@
             this.załadujRoosterToolStripMenuItem.Text = "Załaduj rooster";
             this.załadujRoosterToolStripMenuItem.Click += new System.EventHandler(this.załadujRoosterToolStripMenuItem_Click);
             // 
+            // wczytajToolStripMenuItem
+            // 
+            this.wczytajToolStripMenuItem.Name = "wczytajToolStripMenuItem";
+            this.wczytajToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.wczytajToolStripMenuItem.Text = "Wczytaj wyniki";
+            this.wczytajToolStripMenuItem.Click += new System.EventHandler(this.wczytajToolStripMenuItem_Click);
+            // 
             // zamknijToolStripMenuItem
             // 
             this.zamknijToolStripMenuItem.Name = "zamknijToolStripMenuItem";
             this.zamknijToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.zamknijToolStripMenuItem.Text = "Zamknij";
             this.zamknijToolStripMenuItem.Click += new System.EventHandler(this.zamknijToolStripMenuItem_Click);
+            // 
+            // graczeToolStripMenuItem
+            // 
+            this.graczeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addPlayerMenuItem});
+            this.graczeToolStripMenuItem.Name = "graczeToolStripMenuItem";
+            this.graczeToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.graczeToolStripMenuItem.Text = "Gracze";
+            // 
+            // addPlayerMenuItem
+            // 
+            this.addPlayerMenuItem.Enabled = false;
+            this.addPlayerMenuItem.Name = "addPlayerMenuItem";
+            this.addPlayerMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addPlayerMenuItem.Text = "Dodaj gracza";
+            this.addPlayerMenuItem.Click += new System.EventHandler(this.addPlayerMenuItem_Click);
             // 
             // pomocToolStripMenuItem
             // 
@@ -238,13 +264,6 @@
             this.detailedResultTextbox.Size = new System.Drawing.Size(753, 187);
             this.detailedResultTextbox.TabIndex = 10;
             // 
-            // wczytajToolStripMenuItem
-            // 
-            this.wczytajToolStripMenuItem.Name = "wczytajToolStripMenuItem";
-            this.wczytajToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.wczytajToolStripMenuItem.Text = "Wczytaj wyniki";
-            this.wczytajToolStripMenuItem.Click += new System.EventHandler(this.wczytajToolStripMenuItem_Click);
-            // 
             // loadRoosterDialog
             // 
             this.loadRoosterDialog.FileName = "rooster";
@@ -312,6 +331,8 @@
         private System.Windows.Forms.TextBox detailedResultTextbox;
         private System.Windows.Forms.ToolStripMenuItem wczytajToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog loadRoosterDialog;
+        private System.Windows.Forms.ToolStripMenuItem graczeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addPlayerMenuItem;
     }
 }
 
