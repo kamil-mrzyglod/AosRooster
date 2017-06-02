@@ -10,9 +10,10 @@ namespace Rooster
     public partial class MainWindow : Form
     {
         private static readonly Random Random = new Random();
+        private static bool _isRoosterLoaded = false;
 
-        private IList<Player> _players;
         private readonly SortableBindingList<Player> _bindingSource = new SortableBindingList<Player>();
+        private IList<Player> _players;
 
         public MainWindow()
         {
@@ -29,11 +30,20 @@ namespace Rooster
 
         private void załadujRoosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (_isRoosterLoaded)
+            {
+                MessageBox.Show("Rooster jest obecnie załadowany. Jeśli chcesz załadować go ponownie, musisz zrestartować aplikację.",
+                    "Rooster załadowany",
+                    MessageBoxButtons.OK);
+                return;
+            }
+
             if (openRoosterDialog.ShowDialog() == DialogResult.OK)
             {
                 var content = File.ReadAllText(openRoosterDialog.FileName, GetEncoding(openRoosterDialog.FileName));
                 ReadRoosterFile(content);
                 EnableAddResultButton();
+                _isRoosterLoaded = true;
             }
         }
 
