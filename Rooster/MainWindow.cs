@@ -72,13 +72,12 @@ namespace Rooster
                 var player = copiedPlayers[playerIndex];
 
                 randomResultPlayers.Text += $"{player.PlayerName} ({player.Faction}) vs ";
-
+                copiedPlayers.RemoveAt(playerIndex);
 
                 var secondPlayerIndex = Random.Next(0, copiedPlayers.Count - 1);
                 var secondPlayer = copiedPlayers[secondPlayerIndex];
 
                 randomResultPlayers.Text += $"{secondPlayer.PlayerName} ({secondPlayer.Faction}){Environment.NewLine}";
-                copiedPlayers.RemoveAt(playerIndex);
                 copiedPlayers.RemoveAt(secondPlayerIndex);
 
                 if (copiedPlayers.Count == 0)
