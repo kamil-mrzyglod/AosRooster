@@ -1,8 +1,8 @@
-# AosRooster
+# AosRoster
 A simple application for managing players and scores during AoS tournaments.
 
 ## Downloads
-Current release is **1.1.0** which can be downloaded from release page - https://github.com/kamil-mrzyglod/AosRooster/releases/tag/1.1.0
+Current release is **1.1.0** which can be downloaded from release page - https://github.com/kamil-mrzyglod/AosRoster/releases/tag/1.1.0
 
 ## Installation
 After extracting the ZIP archive just double-click **setup.exe** file, it'll guide you through the installation process.
