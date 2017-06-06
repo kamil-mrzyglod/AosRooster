@@ -15,6 +15,9 @@ namespace Roster
 
         private readonly SortableBindingList<Player> _bindingSource = new SortableBindingList<Player>();
         private readonly IList<Player> _players = new List<Player>();
+        private readonly IList<string> _randomPlayers = new List<string>();
+
+        private int _roundNumber = 1;
 
         public MainWindow()
         {
@@ -78,7 +81,6 @@ namespace Roster
             }
 
             var copiedPlayers = new List<Player>(_players);
-
             while (finished == false)
             {
                 if (copiedPlayers.Count == 0) return;
@@ -86,27 +88,30 @@ namespace Roster
                 var playerIndex = Random.Next(0, copiedPlayers.Count - 1);
                 var player = copiedPlayers[playerIndex];
 
-                randomResultPlayers.Text += $"{player.PlayerName} ({player.Faction}) vs ";
                 copiedPlayers.RemoveAt(playerIndex);
 
                 var secondPlayerIndex = Random.Next(0, copiedPlayers.Count - 1);
                 var secondPlayer = copiedPlayers[secondPlayerIndex];
 
-                randomResultPlayers.Text += $"{secondPlayer.PlayerName} ({secondPlayer.Faction}){Environment.NewLine}";
+                _randomPlayers.Add($"{player.PlayerName} ({player.Faction}) vs {secondPlayer.PlayerName} ({secondPlayer.Faction}){Environment.NewLine}");
                 copiedPlayers.RemoveAt(secondPlayerIndex);
 
                 if (copiedPlayers.Count == 0)
                 {
-                    randomResultPlayers.Text += "==================" + Environment.NewLine;
+                    _randomPlayers.Add($"========== RUNDA {_roundNumber} ========== {Environment.NewLine}");
+                    _roundNumber++;
                     finished = true;
                 }
             }
-           
+            
+            randomResultPlayers.Text = string.Join("", _randomPlayers.Reverse());
         }
 
         private void ResetRandom_Click(object sender, EventArgs e)
         {
             randomResultPlayers.Text = string.Empty;
+            _randomPlayers.Clear();
+            _roundNumber = 1;
         }
 
         private void button1_Click(object sender, EventArgs e)
