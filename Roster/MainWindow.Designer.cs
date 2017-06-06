@@ -114,9 +114,8 @@
             // 
             // addPlayerMenuItem
             // 
-            this.addPlayerMenuItem.Enabled = false;
             this.addPlayerMenuItem.Name = "addPlayerMenuItem";
-            this.addPlayerMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.addPlayerMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addPlayerMenuItem.Text = "Dodaj gracza";
             this.addPlayerMenuItem.Click += new System.EventHandler(this.addPlayerMenuItem_Click);
             // 
@@ -196,7 +195,6 @@
             this.resultDataGrid.RowTemplate.Height = 24;
             this.resultDataGrid.Size = new System.Drawing.Size(644, 660);
             this.resultDataGrid.TabIndex = 7;
-            this.resultDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.resultDataGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultDataGrid_CellValueChanged);
             // 
             // loses
@@ -243,7 +241,6 @@
             this.detailedResultTextbox.Name = "detailedResultTextbox";
             this.detailedResultTextbox.Size = new System.Drawing.Size(563, 317);
             this.detailedResultTextbox.TabIndex = 10;
-            this.detailedResultTextbox.TextChanged += new System.EventHandler(this.detailedResultTextbox_TextChanged);
             // 
             // randomResultPlayers
             // 

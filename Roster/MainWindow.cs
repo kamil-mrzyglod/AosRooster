@@ -14,12 +14,13 @@ namespace Roster
         private static bool _isRosterLoaded;
 
         private readonly SortableBindingList<Player> _bindingSource = new SortableBindingList<Player>();
-        private IList<Player> _players;
+        private readonly IList<Player> _players = new List<Player>();
 
         public MainWindow()
         {
             InitializeComponent();
 
+            resultDataGrid.DataSource = _bindingSource;
             addResultButton.Enabled = false;
         }
 
@@ -44,7 +45,6 @@ namespace Roster
                 var content = File.ReadAllText(openRosterDialog.FileName, GetEncoding(openRosterDialog.FileName));
                 ReadRosterFile(content);
                 EnableAddResultButton();
-                EnableAddPlayerButton();
                 _isRosterLoaded = true;
             }
         }
@@ -54,24 +54,15 @@ namespace Roster
             addResultButton.Enabled = true;
         }
 
-        private void EnableAddPlayerButton()
-        {
-            addPlayerMenuItem.Enabled = true;
-        }
-
         private void ReadRosterFile(string content)
         {
             var players = content.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
-            _players = new List<Player>();
             foreach (var player in players)
             {
                 var playerData = player.Split(';');
                 _players.Add(new Player { PlayerName = playerData[0], Faction = playerData[1]});
                 _bindingSource.Add(new Player { PlayerName = playerData[0], Faction = playerData[1] });
             }
-
-            resultDataGrid.DataSource = _bindingSource;
-
         }
 
         private void randomPlayers_Click(object sender, EventArgs e)
@@ -116,11 +107,6 @@ namespace Roster
         private void ResetRandom_Click(object sender, EventArgs e)
         {
             randomResultPlayers.Text = string.Empty;
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -309,11 +295,6 @@ namespace Roster
             player.Loses = playerInTable.Loses;
             player.Points = playerInTable.Points;
             player.Wins = playerInTable.Wins;
-        }
-
-        private void detailedResultTextbox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
