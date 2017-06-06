@@ -1,4 +1,4 @@
-﻿namespace Rooster
+﻿namespace Roster
 {
     partial class AddResult
     {

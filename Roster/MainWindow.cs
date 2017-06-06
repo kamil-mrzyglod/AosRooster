@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Rooster
+namespace Roster
 {
     public partial class MainWindow : Form
     {
         private static readonly Random Random = new Random();
-        private static bool _isRoosterLoaded;
+        private static bool _isRosterLoaded;
 
         private readonly SortableBindingList<Player> _bindingSource = new SortableBindingList<Player>();
         private IList<Player> _players;
@@ -29,23 +29,23 @@ namespace Rooster
             helpWindow.Show();
         }
 
-        private void załadujRoosterToolStripMenuItem_Click(object sender, EventArgs e)
+        private void załadujRosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_isRoosterLoaded)
+            if (_isRosterLoaded)
             {
-                MessageBox.Show("Rooster jest obecnie załadowany. Jeśli chcesz załadować go ponownie, musisz zrestartować aplikację.",
-                    "Rooster załadowany",
+                MessageBox.Show("Roster jest obecnie załadowany. Jeśli chcesz załadować go ponownie, musisz zrestartować aplikację.",
+                    "Roster załadowany",
                     MessageBoxButtons.OK);
                 return;
             }
 
-            if (openRoosterDialog.ShowDialog() == DialogResult.OK)
+            if (openRosterDialog.ShowDialog() == DialogResult.OK)
             {
-                var content = File.ReadAllText(openRoosterDialog.FileName, GetEncoding(openRoosterDialog.FileName));
-                ReadRoosterFile(content);
+                var content = File.ReadAllText(openRosterDialog.FileName, GetEncoding(openRosterDialog.FileName));
+                ReadRosterFile(content);
                 EnableAddResultButton();
                 EnableAddPlayerButton();
-                _isRoosterLoaded = true;
+                _isRosterLoaded = true;
             }
         }
 
@@ -59,7 +59,7 @@ namespace Rooster
             addPlayerMenuItem.Enabled = true;
         }
 
-        private void ReadRoosterFile(string content)
+        private void ReadRosterFile(string content)
         {
             var players = content.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
             _players = new List<Player>();
@@ -177,7 +177,7 @@ namespace Rooster
                 }
             }
 
-            File.AppendAllText($"{Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)}\\rooster.dat", $"{player1.PlayerName}|{result1}|{player2.PlayerName}|{result2}{Environment.NewLine}");
+            File.AppendAllText($"{Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)}\\roster.dat", $"{player1.PlayerName}|{result1}|{player2.PlayerName}|{result2}{Environment.NewLine}");
 
             detailedResultTextbox.Text += $"{player1.PlayerName} vs {player2.PlayerName} ({result1}:{result2}) {Environment.NewLine}";
             resultDataGrid.Sort(resultDataGrid.Columns[2], ListSortDirection.Descending);
@@ -190,9 +190,9 @@ namespace Rooster
 
         private void wczytajToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (loadRoosterDialog.ShowDialog() == DialogResult.OK)
+            if (loadRosterDialog.ShowDialog() == DialogResult.OK)
             {
-                var content = File.ReadAllText(loadRoosterDialog.FileName);
+                var content = File.ReadAllText(loadRosterDialog.FileName);
                 ReadResultsFile(content);
             }
         }
@@ -309,6 +309,11 @@ namespace Rooster
             player.Loses = playerInTable.Loses;
             player.Points = playerInTable.Points;
             player.Wins = playerInTable.Wins;
+        }
+
+        private void detailedResultTextbox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

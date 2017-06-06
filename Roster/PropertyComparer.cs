@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace Rooster
+namespace Roster
 {
     public class PropertyComparer<T> : IComparer<T>
     {

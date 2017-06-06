@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Rooster
+namespace Roster
 {
     public partial class Help : Form
     {

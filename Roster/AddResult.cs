@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace Rooster
+namespace Roster
 {
     public partial class AddResult : Form
     {
